@@ -11,6 +11,7 @@
 		var searchInput = mapInstance.find( '.pw-map-search' );
 		var mapCanvas = mapInstance.find( '.pw-map' );
 		var latitude = mapInstance.find( '.pw-map-latitude' );
+		var adr_address = mapInstance.find( '.pw-map-adr-address' );
 		var longitude = mapInstance.find( '.pw-map-longitude' );
 		var latLng = new google.maps.LatLng( 54.800685, -4.130859 );
 		var zoom = 5;
@@ -61,6 +62,7 @@
 
 			latitude.val( place.geometry.location.lat() );
 			longitude.val( place.geometry.location.lng() );
+			adr_address.val( place.adr_address );
 		});
 
 		$( searchInput ).keypress( function( event ) {

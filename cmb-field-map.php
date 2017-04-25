@@ -38,7 +38,23 @@ class PW_CMB2_Field_Google_Maps {
           $api_key = $api_key['cmb_field_map_google_map_api'];
           if(!empty($api_key)) {
 
-           echo '<input type="text" class="large-text pw-map-search" id="' . $field->args( 'id' ) . '" />';
+			echo $field_type_object->input( array(
+				'type'  => 'text',
+				'name'  => $field->args('_name') . '[address]',
+				'value' =>  isset( $field_escaped_value['address'] ) ? $field_escaped_value['address'] : '',
+				'class' => 'large-text pw-map-search',
+				'id'  => $field->args( 'id' ),
+				'desc'  => '',
+			) );
+			echo $field_type_object->input(
+				array(
+					'type'       => 'hidden',
+					'name'       => $field->args( '_name' ) . '[adr_address]',
+					'value'      => isset( $field_escaped_value['adr_address'] ) ? $field_escaped_value['adr_address'] : '',
+					'class'      => 'pw-map-adr-address',
+					'desc'       => '',
+				)
+			);
   	   echo '<div class="pw-map"></div>';
            $field_type_object->_desc( true, true );
            echo $field_type_object->input(
